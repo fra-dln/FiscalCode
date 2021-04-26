@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CodiceFiscaleDalena</string>
+    <string name="gender_F">Femmina</string>
+    <string name="name">Nome</string>
+    <string name="gender_M">Maschio</string>
+    <string name="surname">Congome</string>
+    <string name="birthplace">Comune di Nascita</string>
+    <string name="birthplace_sigla">Provincia</string>
+    <string name="background">BACKGROUND</string>
+    <string name="top_app_name">Calcola Il Tuo Codice Fiscale</string>
 </resources>

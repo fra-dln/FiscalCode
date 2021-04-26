@@ -1,0 +1,70 @@
+Un codice fiscale italiano è formato da 16 caratteri alfanumerici. I primi 15 caratteri servono ad identificare la persona, mentre invece, l'ultima lettera è una lettera di controllo.
+Il codice fiscale è diviso in 7 parti e cioè:
+
+1. tre lettere per l'individuazione del cognome
+2. tre lettere per l'individuazione del nome
+3. due numeri per l'anno di nascita
+4. una lettera per il mese di nascita
+5. due numeri per il giorno di nascita ed il sesso
+6. una lettera e tre numeri per l'individuazione del luogo di nascita
+7. una lettera finale di controllo
+
+Dobbiamo ricavare 3 lettere per il cognome. Bisogna prendere la prima, la seconda e la terza consonante. Però potrebbe anche succedere che ci siano solo due consonanti oppure una sola; in tal caso dopo aver preso le consonanti si inizia a prendere anche le vocali. Se ancora mancano altre lettere per completare la nostra stringa di tre caratteri si aggiunge la lettera X.
+I cognomi composti da più parole vanno considerati come se fossero una sola parola.
+
+Il procedimento che si utilizza per ricavare le tre lettere del nome, è uguale a quello del cognome con l'unica differenza che adesso dobbiamo prendere la prima, la terza e la quarta consonante. Nel caso non ci sono quattro consonanti, si prendono le prime tre e se ci sono meno di tre consonanti si effettua lo stesso procedimento del cognome.
+
+I due numeri dell'anno di nascita sono semplicemente le sue ultime due cifre.
+
+Mese una lettera secondo la sottostante tabella:
+
+Gennaio		A
+Febbraio	B
+Marzo		C
+Aprile		D
+Maggio		E
+Giugno		H
+Luglio		L
+Agosto		M
+Settembre	P
+Ottobre		R
+Novembre	S
+Dicembre	T
+
+Per definire il giorno di nascita ed il sesso di una persona abbiamo a disposizione 2 cifre. Nel caso si tratti di un uomo basta usare queste 2 cifre per indicarne semplicemente il giorno di nascita (con lo zero davanti se il giorno è di una sola cifra), mentre se si tratta di una donna dobbiamo inserire il giorno di nascita sommato a 40.
+
+Lettera di controllo: 
+Siamo quindi arrivati all'ultima fase che corrisponde al calcolo, tramite un ben determinato algoritmo, della lettera di controllo. L'algoritmo consiste nel convertire i vari caratteri in numeri secondo la tabella sottostante e poi eseguire varie operazioni seguendo questi passi:
+
+1. Convertire in numeri i caratteri di posizione pari.
+2. Convertire in numeri i caratteri di posizione dispari.
+3. Addizionare tutti i valori ottenuti e dividerli per 26.
+4. Determinare una lettera alfabetica corrispondente al resto dell'operazione (vedi tabella).
+
+Carattere	Valore pari	Valore dispari	Resto	Lettera di controllo
+A o 0 (zero)	0			1	0		A
+B o 1		1			0	1		B
+C o 2		2			5	2		C
+D o 3		3			7	3		D
+E o 4		4			9	4		E
+F o 5		5			13	5		F
+G o 6		6			15	6		G
+H o 7		7			17	7		H
+I o 8		8			19	8		I
+J o 9		9			21	9		J
+K		10			2	10		K
+L		11			4	11		L
+M		12			18	12		M
+N		13			20	13		N
+O		14			11	14		O
+P		15			3	15		P
+Q		16			6	16		Q
+R		17			8	17		R
+S		18			12	18		S
+T		19			14	19		T
+U		20			16	20		U
+V		21			10	21		V
+W		22			22	22		W
+X		23			25	23		X
+Y		24			24	24		Y
+Z		25			23	25		Z

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "top_box_space">60dp</dimen>
+    <dimen name = "between_box_space">10dp</dimen>
+    <dimen name="title_top_space">25dp</dimen>
+    <dimen name = "box_height">45dp</dimen>
+    <dimen name = "box_width">300dp</dimen>
+    <dimen name = "CF_text_size">30sp</dimen>
+    <dimen name = "Title_size">25sp</dimen>
+</resources>
