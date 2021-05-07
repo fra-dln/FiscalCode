@@ -8,7 +8,7 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-  //  private var TAG= "boh"
+
     private lateinit var binding: ActivityMainBinding
     private var name = ""
     private var surname = ""
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.calculate.setOnClickListener {
-
+            // Set local vars with data from user
                 this.name = binding.name.text.toString()
                 this.surname = binding.surname.text.toString()
                 this.birthplace[0] = binding.birthplace.text.toString()
@@ -37,18 +37,34 @@ class MainActivity : AppCompatActivity() {
                 this.birthday[0] = binding.birthday.dayOfMonth
                 this.birthday[1] = binding.birthday.month
                 this.birthday[2] = binding.birthday.year
-
-                tempCF=calculateSurname(this.surname)+calculateName(this.name)+calculateBirthday(this.birthday,this.gender)+calculateBirthplaceCode(this.birthplace[0],this.birthplace[1])
-                tempCF += controlNum(tempCF)
-                binding.fiscalCode.text= tempCF
+            // Syntax Controls
+            if(this.name==""||this.surname==""||this.birthplace[0]==""||this.birthplace[1]==""||this.birthplace[1].length!=2||(binding.genderRadio.checkedRadioButtonId==-1))
+                binding.fiscalCode.setText(R.string.err_mess)
+            else {
+                // Calculate fiscal code
+                tempCF =
+                    calculateSurname(this.surname) + calculateName(this.name) + calculateBirthday(
+                        this.birthday,
+                        this.gender
+                    )
+                // Birthplace exist?
+                if(calculateBirthplaceCode(this.birthplace[0],this.birthplace[1])=="")
+                    binding.fiscalCode.setText(R.string.err_mess)
+                else {
+                    tempCF+=calculateBirthplaceCode(this.birthplace[0],this.birthplace[1])
+                    tempCF += controlNum(tempCF)
+                    binding.fiscalCode.text = tempCF
+                }
+            }
         }
     }
 
     private fun calculateSurname(surname: String): String {
+        // Pick the first 3 consonant. If #consonant<3 add the vowels, if #vowels+consonant<3 add 'X'
         var res = ""
         var ctrl = 0
-        var givenSurname = surname.toUpperCase(Locale.ROOT)
-        givenSurname = givenSurname.replace("\\s".toRegex(), "")
+        var givenSurname = surname.toUpperCase(Locale.ROOT)  //All Upper Case
+        givenSurname = givenSurname.replace("\\s".toRegex(), "") //Remove spaces
         for (i in givenSurname.indices) {
             if (givenSurname[i] != 'A' && givenSurname[i] != 'E' && givenSurname[i] != 'I' && givenSurname[i] != 'O' && givenSurname[i] != 'U' && givenSurname[i] != 'Y') {
                 res += givenSurname[i]
@@ -76,6 +92,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateName(name: String): String {
+        // Same as the surname, but pick first, third and fourth consonants
         var res = ""
         var ctrl = 0
         var givenName = name.toUpperCase(Locale.ROOT)
@@ -118,6 +135,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateBirthday(birthday: Array<Int>, gender: String): String {
+        //every month has a letter, the day is the same, unless you're female so add 40 to your day of birth
+        // the year is the last two digits
         var res = ""
         var temp = ""
         res += birthday[2].toString().takeLast(2)
@@ -150,6 +169,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun controlNum(cf: String): String {
+        //Control number. Convert each char in a int, sum up everything and divide by 26. The remainder of the division
+        // has a letter associated to
         val res: String
         var cipher = 0
 
@@ -269,6 +290,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateBirthplaceCode(city: String, prov: String): String {
+        // Given the birthplace, from a csv extract the countrycode
         lateinit var temp: List<String>
         val reader = assets.open("countrycode.csv").bufferedReader()
         var res = ""

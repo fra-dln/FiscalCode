@@ -9,5 +9,5 @@
     <string name="background">BACKGROUND</string>
     <string name="top_app_name">Calcola Il Tuo Codice Fiscale</string>
     <string name="calculate">calcola</string>
-    <string name="err_mess">CAMPI VUOTI</string>
+    <string name="err_mess">Campi Vuoti o Errati</string>
 </resources>
