@@ -8,4 +8,6 @@
     <string name="birthplace_sigla">Provincia</string>
     <string name="background">BACKGROUND</string>
     <string name="top_app_name">Calcola Il Tuo Codice Fiscale</string>
+    <string name="calculate">calcola</string>
+    <string name="err_mess">CAMPI VUOTI</string>
 </resources>

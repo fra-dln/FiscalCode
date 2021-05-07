@@ -21,7 +21,7 @@
         android:id="@+id/name"
         android:layout_width="@dimen/box_width"
         android:layout_height="@dimen/box_height"
-        android:layout_marginTop="@dimen/top_box_space"
+        android:layout_marginTop="@dimen/between_box_space"
         android:ems="10"
         android:hint="@string/name"
         android:importantForAutofill="no"
@@ -81,13 +81,13 @@
         app:layout_constraintTop_toBottomOf="@+id/birthplace2">
 
         <RadioButton
-            android:id="@+id/maleRadio"
+            android:id="@+id/male"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/gender_M" />
 
         <RadioButton
-            android:id="@+id/femaleRadio"
+            android:id="@+id/female"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/gender_F" />
@@ -128,5 +128,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate"
+        app:layout_constraintBottom_toTopOf="@+id/fiscalCode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
